@@ -1,33 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import Logo from "../assets/logo.svg";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar() {
+export default function Navbar({ activeSection }) {
   const isLargeScreen = useMediaQuery("(max-width: 768px)");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState("");
   const [focusedSection, setFocusedSection] = useState(null);
-  const sections = ["Home", "Why Us", "QnA", "Testimonial"];
+  const sections = ["Home", "Services", "Projects", "Contact"];
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setCurrentSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
-    sections.forEach((id) => {
-      const section = document.getElementById(id.toLowerCase().replace(" ", ""));
-      if (section) observer.observe(section);
-    });
-
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const backgroundVariants = {
@@ -79,7 +74,7 @@ export default function Navbar() {
       color: section === focusedSection ? "#FEAF60" : "#FFFFFF",
       opacity: section === focusedSection ? 1 : 0,
       y: section === focusedSection ? 0 : 20,
-      transition: { duration: 0.4, ease: "easeInOut" }
+      transition: { duration: 0.4, ease: "easeInOut" },
     },
   });
 
@@ -95,34 +90,47 @@ export default function Navbar() {
   const handleItemClick = (section) => {
     setFocusedSection(section); // Fokus pada elemen yang dipilih
     setTimeout(() => {
-      handleClose(); 
-    }, 700); 
+      handleClose();
+    }, 700);
   };
 
   return (
-    <div className="text-[#FEAF60]">
-      {isLargeScreen ? (
-        <header className="fixed z-50 flex items-center justify-between w-screen px-2 pt-3">
+<div className="text-[#FEAF60]">
+  <AnimatePresence mode="wait">
+    {isLargeScreen || isScrolled ? (
+      <motion.header
+        key="scrolled-or-mobile"
+        className="fixed z-50 flex items-center justify-between w-screen px-8 pt-8 md:px-[10%]"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -100, opacity: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      >
+        {/* Konten Navbar */}
+        <nav className="flex items-center justify-between w-full">
           {/* Logo */}
-          <div className="w-[40px]">
+          <div className="w-[40px] md:w-[50px]">
             <a href="#home">
-              <img className="w-full h-full bg-cover" src={Logo} alt="Logo" />
+              <img
+                className="w-full h-full transition duration-300 ease-in-out bg-cover hover:-translate-y-1 hover:scale-110"
+                src={Logo}
+                alt="Logo"
+              />
             </a>
           </div>
 
           {/* Dropdown Menu */}
           <div className="relative">
             <div className="dropdown">
-              <div
+              <button
                 tabIndex={0}
-                role="button"
-                className="flex items-center justify-center pointer-events-auto btn btn-ghost btn-circle"
+                className="flex items-center justify-center pointer-events-auto btn btn-ghost btn-circle hover:-translate-y-1 hover:scale-110"
                 onClick={handleOpen}
               >
                 {!dropdownOpen && (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5"
+                    className="w-10 h-10 p-2 rounded-full md:w-12 md:h-12 bg-slate-600"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -135,19 +143,27 @@ export default function Navbar() {
                     />
                   </svg>
                 )}
-              </div>
+              </button>
             </div>
           </div>
+        </nav>
 
-          {/* Dropdown Full-Screen */}
-          <div className="fixed inset-0 z-40 flex flex-col items-center justify-center text-white pointer-events-none">
+        {/* Dropdown Open Content */}
+        {dropdownOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center text-white bg-black bg-opacity-90"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            {/* Background Variants */}
             <motion.div
               className="absolute inset-0"
               initial="closed"
               animate={dropdownOpen ? "openYellow" : "closed"}
               variants={backgroundVariants}
             ></motion.div>
-
             <motion.div
               className={`absolute inset-0 ${
                 dropdownOpen ? "pointer-events-auto" : "pointer-events-none"
@@ -156,99 +172,109 @@ export default function Navbar() {
               animate={dropdownOpen ? "openBlack" : "closed"}
               variants={backgroundVariants}
             ></motion.div>
-            
-            {dropdownOpen && (
-                <motion.div
-                className="absolute z-50 cursor-pointer pointer-events-auto top-5 right-5"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={handleClose} // Tutup menu
-                >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-8 h-8"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                    />
-                </svg>
-                </motion.div>
-            )}
 
-            {dropdownOpen && (
-              <motion.ul
-                className="z-50 text-center pointer-events-auto"
-                initial="hidden"
-                animate="visible"
-                variants={listVariants}
+            {/* Tombol Tutup */}
+            <motion.div
+              className="absolute z-50 cursor-pointer pointer-events-auto top-7 right-7 md:top-12 md:right-36"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              exit={{ opacity: 0, y: -20 }}
+              onClick={handleClose}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-8 h-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                {sections.map((section, i) => (
-                  <motion.li
-                    key={i}
-                    className="my-4 text-2xl font-bold"
-                    variants={focusedSection ? listItemVariants(section) : {}}
-                    animate={focusedSection ? "focused" : "visible"}
-                    onClick={() => handleItemClick(section)}
-                  >
-                    <a href={`#${section.toLowerCase().replace(" ", "")}`}>
-                      {section}
-                    </a>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            )}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </motion.div>
+
+            {/* Dropdown List */}
+            <motion.ul
+              className="z-50 text-center pointer-events-auto"
+              initial="hidden"
+              animate="visible"
+              variants={listVariants}
+            >
+              {sections.map((section) => (
+                <motion.li
+                  key={section}
+                  className="my-8 text-2xl font-semibold md:my-14"
+                  variants={
+                    focusedSection
+                      ? listItemVariants(section)
+                      : listVariants
+                  }
+                  animate={focusedSection ? "focused" : "visible"}
+                  onClick={() => handleItemClick(section)}
+                >
+                  <a 
+                    href={`#${section.toLowerCase().replace(" ", "")}`}
+                    className={`${
+                      activeSection === section.toLowerCase().replace(" ", "")
+                        ? "text-[#FEAF60] font-bold"
+                        : ""
+                    } hover:text-[#e9b887] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`}>
+                    {section}
+                  </a>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        )}
+      </motion.header>
+    ) : (
+      <motion.header
+        key="default-desktop"
+        className="fixed flex top-0 right-0 left-0 items-center z-50 mt-12 lg:mt-8 xl:mt-10 px-[10%] justify-between h-[50px] w-full"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      >
+        {/* Konten Navbar */}
+        <nav className="flex items-center justify-between w-full">
+          {/* Logo */}
+          <div className="w-[50px]">
+            <a href="#home">
+              <img
+                className="w-full h-full transition duration-300 ease-in-out bg-cover hover:-translate-y-1 hover:scale-110"
+                src={Logo}
+                alt="Logo"
+              />
+            </a>
           </div>
-        </header>
-      ) : (
-        <header className="fixed flex top-0 right-0 left-0 items-center z-50 mt-12 lg:mt-8 xl:mt-10 px-[10%] justify-between h-[50px] w-full">
-          <div className="flex items-center justify-between w-full">
-            <div className="w-[55px]">
-              <img className="w-full h-full bg-cover" src={Logo} alt="Logo" />
-            </div>
-            <div className="flex gap-4 text-base font-extrabold lg:gap-6 xl:gap-8 lg:text-lg xl:text-xl">
+
+          {/* Links */}
+          <div className="flex gap-10 text-lg font-semibold">
+            {sections.map((section) => (
               <a
-                href="#home"
+                key={section}
+                href={`#${section.toLowerCase().replace(" ", "")}`}
                 className={`${
-                  currentSection === "home" ? "text-blue-700" : ""
-                }`}
+                  activeSection === section.toLowerCase().replace(" ", "")
+                    ? "text-black font-bold"
+                    : ""
+                } hover:text-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`}
               >
-                Home
+                {section}
               </a>
-              <a
-                href="#whyUs"
-                className={`${
-                  currentSection === "whyUs" ? "text-blue-700" : ""
-                }`}
-              >
-                Why Us
-              </a>
-              <a
-                href="#qnA"
-                className={`${
-                  currentSection === "qnA" ? "text-blue-700" : ""
-                }`}
-              >
-                QnA
-              </a>
-              <a
-                href="#testimonial"
-                className={`${
-                  currentSection === "testimonial" ? "text-blue-700" : ""
-                }`}
-              >
-                Testimonial
-              </a>
-            </div>
+            ))}
           </div>
-        </header>
-      )}
-    </div>
+        </nav>
+      </motion.header>
+    )}
+  </AnimatePresence>
+</div>
+
   );
 }

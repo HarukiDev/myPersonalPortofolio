@@ -1,49 +1,29 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import Navbar from "../component/navbar.jsx";
 import { useInView } from "react-intersection-observer";
+import Hero from "../section/hero.jsx";
+import Experience from "../section/experience.jsx";
 
-export default function Homepage() {
+export default function Home() {
   const [activeSection, setActiveSection] = useState("");
 
-  const { ref: getStartedRef, inView: getStartedInView } = useInView({
-    threshold: 0.5,
+  const { ref: heroRef, inView: isHeroInView } = useInView({
+    threshold: 0.3,
     onChange: (inView) => {
       if (inView) {
-        setActiveSection("get-started-section");
-      }
-    },
-  });
-
-  const { ref: whyUsRef, inView: whyUsInView } = useInView({
-    threshold: 0.5,
-    onChange: (inView) => {
-      if (inView) {
-        setActiveSection("why-us-section");
-      }
-    },
-  });
-
-  const { ref: qnaRef, inView: qnaInView } = useInView({
-    threshold: 0.5,
-    onChange: (inView) => {
-      if (inView) {
-        setActiveSection("qna-section");
-      }
-    },
-  });
-
-  const { ref: testimonialRef, inView: testimonialInView } = useInView({
-    threshold: 0.5,
-    onChange: (inView) => {
-      if (inView) {
-        setActiveSection("testimonial-section");
+        setActiveSection("home"); 
       }
     },
   });
 
   return (
     <div>
+      {/* Navbar menerima activeSection sebagai prop */}
       <Navbar activeSection={activeSection} />
+      <div className="relative flex flex-col w-full overflow-hidden" ref={heroRef}>
+        <Hero />
+        <Experience />
+      </div>
     </div>
   );
 }
