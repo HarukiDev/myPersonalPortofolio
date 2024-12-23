@@ -6,7 +6,7 @@ import IntroTyping from "../component/introTyping.jsx";
 
 export default function Hero() {
   return (
-    <div className="relative flex items-center justify-center w-full h-screen bg-[#F4F3ED]">
+    <div>
       {/* Nama Besar */}
       <div className="relative mt-20 mb-28 md:mt-0 md:mb-0">
         <IntroTyping 
@@ -14,11 +14,12 @@ export default function Hero() {
           delayAfterH1={1.2}
         />
         <motion.h1
+          id="hero-heading"
           className="font-extrabold text-[45px] md:text-[60px] lg:text-[80px] xl:text-[100px] text-center transition-all ease-in-out duration-300 lg:mb-24 md:mb-64"
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          viewport={{ once: false }} // Animasi akan dipicu setiap kali elemen terlihat
+          viewport={{ once: false }}
         >
           JIMMY MAULANA
         </motion.h1>
@@ -27,15 +28,15 @@ export default function Hero() {
       </div>
       
       {/* Lokasi */}
-      <motion.div
+      <motion.aside
         className="absolute bottom-5 lg:bottom-[20%] left-0 transform rotate-6 z-40"
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.5, ease: "easeInOut" }}
-        viewport={{ once: false }} // Animasi dipicu ulang saat elemen terlihat
+        viewport={{ once: false }}
       >
         <LocationTag />
-      </motion.div>
+      </motion.aside>
       
       {/* Deskripsi dan Tombol */}
       <motion.div
@@ -43,7 +44,7 @@ export default function Hero() {
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 2 }}
-        viewport={{ once: false }} // Animasi dipicu ulang saat elemen terlihat
+        viewport={{ once: false }}
       >
         <p className="text-base md:text-lg">
           Hi, I’m Jimmy Maulana! I specialize in React.js, UI design, and creating innovative, user-friendly solutions.

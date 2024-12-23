@@ -5,13 +5,13 @@ import DottedBackground from "../component/dottedBackground";
 
 export default function Experience() {
   return (
-    <section className="relative flex flex-col items-center w-full h-auto py-20 text-white bg-[#0F172A]">
+    <div>
       {/* Dotted Background */}
       <DottedBackground />
 
       {/* Bagian About Me */}
-      <header className="relative z-20 w-full max-w-[800px] text-center">
-        <motion.div>
+      <div className="relative z-20 w-full max-w-[800px] text-center">
+        <motion.div className="p-12">
           <motion.h2
             className="mb-6 text-3xl font-bold md:text-4xl"
             initial={{ opacity: 0, y: -50 }}
@@ -33,12 +33,12 @@ export default function Experience() {
             goals.
           </motion.p>
         </motion.div>
-      </header>
+      </div>
 
       {/* Bagian Timeline */}
-      <article className="relative z-20 w-full mt-20">
+      <div className="relative z-20 w-full mt-20 max-w-[800px]">
         <Timeline />
-      </article>
-    </section>
+      </div>
+    </div>
   );
 }

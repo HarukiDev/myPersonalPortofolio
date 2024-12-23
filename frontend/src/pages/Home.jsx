@@ -1,29 +1,38 @@
 import React, { useState } from "react";
 import Navbar from "../component/navbar.jsx";
-import { useInView } from "react-intersection-observer";
 import Hero from "../section/hero.jsx";
 import Experience from "../section/experience.jsx";
+import Achivements from "../section/achivements.jsx";
+import ToolsUsed from "../component/marquee.jsx";
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("");
-
-  const { ref: heroRef, inView: isHeroInView } = useInView({
-    threshold: 0.3,
-    onChange: (inView) => {
-      if (inView) {
-        setActiveSection("home"); 
-      }
-    },
-  });
+  const [activeSection, setActiveSection] = useState("home");
 
   return (
-    <div>
-      {/* Navbar menerima activeSection sebagai prop */}
-      <Navbar activeSection={activeSection} />
-      <div className="relative flex flex-col w-full overflow-hidden" ref={heroRef}>
-        <Hero />
-        <Experience />
-      </div>
+    <div id="home">
+      {/* Navbar */}
+      <header>
+        <Navbar activeSection={activeSection} />
+      </header>
+
+      {/* Main Sections */}
+      <main className="relative flex flex-col w-full overflow-hidden">
+        <section id="hero" className="relative flex items-center justify-center w-full h-screen bg-[#F4F3ED]">
+          <Hero />
+        </section>
+
+        <section id="experience" className="relative flex flex-col items-center w-full h-auto py-20 text-white bg-[#0F172A]">
+          <Experience />
+        </section>
+
+        <section id="achievements" className="flex flex-col items-center w-full h-auto px-6 py-20 mx-auto">
+          <Achivements />
+        </section>
+
+        <section id="tools" className="w-full h-auto py-20 mx-auto">
+          <ToolsUsed />
+        </section>
+      </main>
     </div>
   );
 }

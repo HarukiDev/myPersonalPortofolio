@@ -4,42 +4,42 @@ import { AnimatePresence, motion } from "framer-motion";
 const timelineData = [
   {
     title: "Lintasarta - Capstone Project",
-    date: "October 2024",
+    date: "October 2024 - December 2024",
     description:
       "Led the design and development of a modern, user-friendly recruitment platform interface, focusing on accessibility, responsiveness, and interactivity. Integrated 'Adinda,' an intuitive chatbot assistant.",
   },
   {
     title: "Bangkit Academy - Cloud Computing",
-    date: "September 2024",
+    date: "September 2024 - December 2024",
     description:
       "Comprehensive training on Google Cloud technologies as part of the Kampus Merdeka program. Developed technical and soft skills, including project management, teamwork, and critical thinking.",
   },
   {
     title: "Fasilkom Science Community - Head of Multimedia",
-    date: "January 2024",
+    date: "January 2024 - December 2024",
     description:
       "Designed organizational materials, coordinated multimedia events, and represented the organization at faculty-level and academic forums.",
   },
   {
     title: "Himpunan Mahasiswa Informatika - Multimedia Staff",
-    date: "February 2023",
+    date: "February 2023 - December 2024",
     description:
       "Created Instagram feed templates, edited multimedia content, and managed documentation for major events like Srifoton and PKKMB Jurusan.",
   },
 ];
 
-export default function Timeline() {
+export default function timeline() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className="max-w-5xl px-8 py-10 mx-auto">
+    <div className="px-8 py-10 mx-auto">
       <motion.div
         className="mb-12 text-center"
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h2 className="text-3xl font-bold text-white">Experience Timeline</h2>
+        <h2 className="text-3xl font-bold text-white">Experience</h2>
       </motion.div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {timelineData.map((item, idx) => (
