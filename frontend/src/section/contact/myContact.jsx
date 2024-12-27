@@ -155,7 +155,7 @@ export default function myContact() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            Send Me Message
+            Send Me Message (WhatsApp)
           </motion.button>
         </form>
       </motion.div>
