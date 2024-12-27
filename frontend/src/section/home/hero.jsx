@@ -56,7 +56,7 @@ export default function hero() {
             Get in touch
           </button>
           <a
-            href="/CV.pdf"
+            href="/CV%20JIMMY%20MAULANA%202024.pdf"
             download="Jimmy_Maulana_CV.pdf" 
             className="py-2 px-2 border-2 border-[#FEAF60] rounded-lg transition-transform hover:border-[#000000] hover:translate-x-1"
           >
