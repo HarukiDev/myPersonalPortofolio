@@ -51,7 +51,8 @@ export default function hero() {
           Hi, I’m Jimmy Maulana! I specialize in React.js, UI design, and creating innovative, user-friendly solutions.
         </p>
         <div className="flex flex-row-reverse gap-2 py-2 mt-5 md:flex-row">
-          <button className="px-6 py-2 text-white transition-transform bg-black rounded-lg shadow-lg hover:bg-gray-800 hover:translate-x-1">
+          <button className="px-6 py-2 text-white transition-transform bg-black rounded-lg shadow-lg hover:bg-gray-800 hover:translate-x-1"
+          onClick={() => (window.location.href = "/contact")}>
             Get in touch
           </button>
           <a

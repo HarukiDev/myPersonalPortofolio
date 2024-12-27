@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Services from "./pages/services.jsx";
-import Projects from "./pages/projects.jsx";
-import Contact from "./pages/contact.jsx";
+import Home from "@/pages/home.jsx";
+import Services from "@/pages/services.jsx";
+import Projects from "@/pages/projects.jsx";
+import Contact from "@/pages/contact.jsx";
 
 function App() {
   return (
