@@ -1,9 +1,24 @@
 {
-    "build": {
-      "command": "pnpm build",
-      "outputDirectory": "dist"
-    },
-    "installCommand": "pnpm install",
-    "framework": "vite"
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "rewrites": [
+    { "source": "/services", "destination": "/" },
+    { "source": "/projects", "destination": "/" },
+    { "source": "/contact", "destination": "/" },
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
