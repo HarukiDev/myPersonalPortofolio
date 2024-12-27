@@ -3,6 +3,7 @@
       "command": "pnpm build",
       "outputDirectory": "dist"
     },
-    "installCommand": "pnpm install"
+    "installCommand": "pnpm install",
+    "framework": "vite"
   }
   
