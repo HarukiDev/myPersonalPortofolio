@@ -14,11 +14,5 @@
     { "source": "/projects", "destination": "/" },
     { "source": "/contact", "destination": "/" },
     { "source": "/(.*)", "destination": "/" }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
   ]
 }
