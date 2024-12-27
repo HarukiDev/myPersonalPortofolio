@@ -39,7 +39,10 @@ export default function timeline() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h2 className="text-3xl font-bold text-white">Experience</h2>
+        <h2 className="mb-6 text-3xl font-bold text-white">Experience</h2>
+        <p className="text-base md:text-lg">
+          A journey through my professional growth, where I’ve honed my skills
+        </p>
       </motion.div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {timelineData.map((item, idx) => (

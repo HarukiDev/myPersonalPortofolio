@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+
+//Navbar and Footer
 import Navbar from "../component/navbar.jsx";
-import Hero from "../section/hero.jsx";
-import Experience from "../section/experience.jsx";
-import Achivements from "../section/achivements.jsx";
+import Footer from "../component/footer.jsx";
+
+//main of home
+import Hero from "../section/home/hero.jsx";
+import Experience from "../section/home/experience.jsx";
+import Achivements from "../section/home/achivements.jsx";
 import ToolsUsed from "../component/marquee.jsx";
 
-export default function Home() {
+export default function home() {
   const [activeSection, setActiveSection] = useState("home");
 
   return (
@@ -17,7 +22,7 @@ export default function Home() {
 
       {/* Main Sections */}
       <main className="relative flex flex-col w-full overflow-hidden">
-        <section id="hero" className="relative flex items-center justify-center w-full h-screen bg-[#F4F3ED]">
+        <section id="hero">
           <Hero />
         </section>
 
@@ -33,6 +38,11 @@ export default function Home() {
           <ToolsUsed />
         </section>
       </main>
+      
+      {/* Footer */}
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

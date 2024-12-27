@@ -89,9 +89,11 @@ export default function Navbar({ activeSection }) {
 
   const handleItemClick = (section) => {
     setFocusedSection(section); // Fokus pada elemen yang dipilih
+  
+    // Tunda navigasi hingga animasi selesai
     setTimeout(() => {
-      handleClose();
-    }, 700);
+      window.location.href = `/${section.toLowerCase() === "home" ? "" : section.toLowerCase().replace(" ", "")}`;
+    }, 700); 
   };
 
   return (
@@ -110,7 +112,7 @@ export default function Navbar({ activeSection }) {
             <nav className="flex items-center justify-between w-full">
               {/* Logo */}
               <div className="w-[40px] md:w-[50px]">
-                <a href="#home">
+                <a href="/">
                   <img
                     className="w-full h-full transition duration-300 ease-in-out bg-cover hover:-translate-y-1 hover:scale-110"
                     src={Logo}
@@ -214,14 +216,19 @@ export default function Navbar({ activeSection }) {
                           : listVariants
                       }
                       animate={focusedSection ? "focused" : "visible"}
-                      onClick={() => handleItemClick(section)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleItemClick(section);
+                      }}
                     >
                       <a
-                        href={`#${section.toLowerCase().replace(" ", "")}`}
-                        className={`${activeSection === section.toLowerCase().replace(" ", "")
+                        href={`/${section.toLowerCase() === "home" ? "" : section.toLowerCase().replace(" ", "")}`}
+                        className={`${
+                          activeSection === section.toLowerCase().replace(" ", "")
                             ? "text-orange-500 font-bold"
                             : ""
-                          } hover:text-[#e9b887] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`}>
+                        } hover:text-[#e9b887] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`}
+                      >
                         {section}
                       </a>
                     </motion.li>
@@ -243,7 +250,7 @@ export default function Navbar({ activeSection }) {
             <nav className="flex items-center justify-between w-full">
               {/* Logo */}
               <div className="w-[50px]">
-                <a href="#home">
+                <a href="/">
                   <img
                     className="w-full h-full transition duration-300 ease-in-out bg-cover hover:-translate-y-1 hover:scale-110"
                     src={Logo}
@@ -257,7 +264,7 @@ export default function Navbar({ activeSection }) {
                 {sections.map((section) => (
                   <a
                     key={section}
-                    href={`#${section.toLowerCase().replace(" ", "")}`}
+                    href={`/${section.toLowerCase() === "home" ? "" : section.toLowerCase().replace(" ", "")}`}
                     className={`${activeSection === section.toLowerCase().replace(" ", "")
                         ? "text-black font-bold"
                         : ""
