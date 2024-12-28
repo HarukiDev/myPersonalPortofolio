@@ -6,7 +6,7 @@ import IntroTyping from "../../component/introTyping.jsx";
 
 export default function hero() {
   return (
-    <div className="relative flex items-center justify-center w-full h-screen min-h-[750px] max-h-96">
+    <div className="relative flex items-center justify-center w-full h-screen min-h-[850px] max-h-[300px]">
       {/* Nama Besar */}
       <div className="relative mt-20 mb-28 md:mt-0 md:mb-0">
         <IntroTyping 
