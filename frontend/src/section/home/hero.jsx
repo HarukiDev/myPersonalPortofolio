@@ -6,7 +6,7 @@ import IntroTyping from "../../component/introTyping.jsx";
 
 export default function hero() {
   return (
-    <div className="relative flex items-center justify-center w-full h-screen min-h-[750px]">
+    <div className="relative flex items-center justify-center w-full h-screen min-h-[750px] max-h-96">
       {/* Nama Besar */}
       <div className="relative mt-20 mb-28 md:mt-0 md:mb-0">
         <IntroTyping 
@@ -41,7 +41,7 @@ export default function hero() {
       
       {/* Deskripsi dan Tombol */}
       <motion.div
-        className="absolute bottom-36 md:bottom-5 lg:bottom-[20%] right-[5%] md:text-start text-end w-[75%] md:w-[25%] z-30"
+        className="absolute bottom-36 md:bottom-5 lg:bottom-[20%] right-[5%] md:text-start text-end w-[75%] md:w-[25%] z-30 mt-8"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 2 }}
