@@ -1,1 +1,3 @@
-still in progress, deadline = 26
+Link Deploy:
+https://jimmy-maulana.vercel.app/
+
