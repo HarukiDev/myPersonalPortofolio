@@ -188,7 +188,7 @@ export default function myProjects() {
   
         <AnimatePresence mode="wait">
             <motion.div
-                key={filter} 
+                key={`${filter}-${currentPage}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
