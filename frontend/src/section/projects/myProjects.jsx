@@ -146,12 +146,12 @@ export default function myProjects() {
       <div className="flex flex-col items-center w-full p-6">
         {/* Filter Buttons & Pagination */}
         <motion.div
-          className="flex items-center justify-between w-full gap-4 mb-6 md:w-[800px] xl:w-[950px] px-12"
+          className="flex items-center justify-between w-full gap-4 mb-6 md:w-[800px] xl:w-[950px] md:px-12"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         > 
-            <div className="flex flex-row flex-wrap gap-4 md:w-[50%]">
+            <div className="flex flex-row flex-wrap gap-4 w-[50%] overflow-x-auto">
                 {/* Category Buttons */}
                 {["All", "Web", "UI/UX", "Other"].map((category) => (
                     <button

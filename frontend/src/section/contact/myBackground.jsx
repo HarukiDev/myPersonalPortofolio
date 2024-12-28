@@ -22,6 +22,7 @@ export default function myBackgrouund() {
         <CardProfil />
 
         <div className="max-w-[800px] text-center flex flex-col justify-center items-center mt-6">
+          <div className="px-12">
             {/* Title */}
             <motion.h1
               className="font-extrabold text-[30px] md:text-[40px] lg:text-[60px] text-center mb-4"
@@ -51,7 +52,7 @@ export default function myBackgrouund() {
                     I'm always eager to deepen my knowledge of web development. With the experience I have, I feel more prepared to tackle challenges and engage in projects that can make a real impact. I'm constantly seeking opportunities to expand my skills, collaborate with others, and contribute to innovative solutions.
                 </motion.p>
             </div>
-            
+          </div>
         </div>
 
         {/* Scroll Down Section */}

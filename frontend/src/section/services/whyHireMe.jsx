@@ -16,8 +16,8 @@ export default function whyHireMe() {
       {/* Dotted Background */}
       <DottedBackground />
 
-      <div className="relative flex flex-col items-center justify-center w-full">
-        <div className="max-w-[800px] text-center flex flex-col justify-center items-center">
+      <div className="relative flex flex-col items-center justify-center w-full max-w-[800px]">
+        <div className="p-12">
           {/* Title */}
           <motion.h1
             className="font-extrabold text-[30px] md:text-[40px] lg:text-[60px] text-center mb-4"
