@@ -61,6 +61,6 @@ After the application is running, open your browser and navigate to http://local
 ## Contact
 If you have any questions or need assistance, feel free to contact me:
 
-- Email: jimmy.maulana@example.com
-- LinkedIn: Jimmy Maulana
-- GitHub: jimmymaulana
+- Email: jimmymaulana01@gmail.com
+- LinkedIn: [Jimmy Maulana](https://www.linkedin.com/in/jimmy-maulana-1622b1270/)
+- GitHub: [HarukiDev](https://github.com/HarukiDev)
