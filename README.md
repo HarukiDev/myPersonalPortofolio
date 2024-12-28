@@ -46,7 +46,7 @@ Follow these steps to install and run the project locally:
    Or using pnpm:
    pnpm install
 
-3. **Jalankan Aplikasi::**
+3. **Start the development server:**
    ```bash
    npm run dev
 
@@ -55,7 +55,7 @@ Follow these steps to install and run the project locally:
    
 The application will be accessible at http://localhost:5173 by default.
    
-## Cara Penggunaan
+## Usage
 After the application is running, open your browser and navigate to http://localhost:5173
 
 ## Contact
