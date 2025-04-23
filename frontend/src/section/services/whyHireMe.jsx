@@ -17,7 +17,7 @@ export default function whyHireMe() {
       <DottedBackground />
 
       <div className="relative flex flex-col items-center justify-center w-full max-w-[800px]">
-        <div className="p-12">
+        <div className="p-12 md:p-0">
           {/* Title */}
           <motion.h1
             className="font-extrabold text-[30px] md:text-[40px] lg:text-[60px] text-center mb-4"
@@ -30,7 +30,7 @@ export default function whyHireMe() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-base md:text-lg text-center max-w-[600px] mb-10"
+            className="mb-10 text-base text-center md:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}

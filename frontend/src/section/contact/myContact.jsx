@@ -46,7 +46,7 @@ export default function myContact() {
         <div className="p-2 border rounded-lg">
           <div className="mb-6">
             <h3 className="text-lg font-semibold">Address:</h3>
-            <p>Swadaya Street, RT 43 RW 13, No. 2409, Srijaya Subdistrict, Alang-Alang Lebar District, Palembang City, South Sumatra, Indonesia.</p>
+            <p>Palembang City, South Sumatra, Indonesia.</p>
           </div>
 
           <div className="mb-6">
