@@ -5,7 +5,7 @@
 
 ## Project Description
 
-Frontend is a web application developed using React and Vite. This project aims to provide an interactive platform for users to efficiently manage their data and display compelling visualizations. With responsive design and advanced features, this application is expected to enhance user experience significantly.
+Developed using React and Vite. This project aims to provide an interactive platform for users to efficiently manage their data and display compelling visualizations. With responsive design and advanced features, this application is expected to enhance user experience significantly.
 
 ## Live Demo
 
