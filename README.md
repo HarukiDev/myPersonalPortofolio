@@ -1,3 +1,5 @@
+Not Update (Portofolio 2024)
+
 # Frontend
 
 ![image](https://github.com/user-attachments/assets/4a3bdfd1-98a2-4d6f-bca1-4bcfd904593b)
